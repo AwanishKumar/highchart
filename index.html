@@ -1,0 +1,212 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+		<title>Highcharts Example</title>
+
+		<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
+		
+		<script type="text/javascript">
+$(function () {
+
+$('.btnClick').click(function(){
+var vala=parseFloat($('.txta').val());
+var valb=parseFloat($('.txtb').val());
+var valc=parseFloat($('.txtc').val());
+var vald=parseFloat($('.txtd').val());
+var vale=parseFloat($('.txte').val());
+
+	$('#container').highcharts({
+        chart: {
+            plotBackgroundColor: null,
+            plotBorderWidth: null,
+            plotShadow: true
+        },
+        title: {
+            text: 'Percentage'
+        },
+        tooltip: {
+    	    pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'
+        },
+        plotOptions: {
+            pie: {
+                allowPointSelect: true,
+                cursor: 'pointer',
+                dataLabels: {
+                    enabled: true,
+                    color: '#000000',
+                    connectorColor: '#000000',
+                    format: '<b>{point.name}</b>: {point.percentage:.1f} %'
+                }
+            }
+        },
+        series: [{
+            type: 'pie',
+            name: 'Browser share',
+            data: [
+                ['A',  vala],
+                ['B',  valb],
+				['C',  valc],
+                ['D',  vald],
+                ['E',  vale]
+                
+            ]
+        }]
+    });
+	$('#container1').highcharts({
+            chart: {
+                type: 'column'
+            },
+            title: {
+                text:'Percentage'
+            },
+            subtitle: {
+                text: ''
+            },
+            xAxis: {
+                categories: [
+                    'values'
+                    
+                ]
+            },
+            yAxis: {
+                min: 0
+               
+            },
+            
+            plotOptions: {
+                column: {
+                    pointPadding: 0.2,
+                    borderWidth: 0
+                }
+            },
+            series: [{
+                name: 'A',
+                data: [vala]
+    
+            }, {
+                name: 'B',
+                data: [valb]
+    
+            }, {
+                name: 'C',
+                data: [valc]
+    
+            }, {
+                name: 'D',
+                data: [vald]
+    
+            }, {
+                name: 'E',
+                data: [vale]
+    
+            }
+			]
+        });
+		 $('#container2').highcharts({
+            chart: {
+                type: 'bar'
+            },
+            title: {
+                text: 'Stacked bar chart'
+            },
+            xAxis: {
+                categories: ['Percentage']
+            },
+            yAxis: {
+                min: 0
+               
+            },
+            legend: {
+                backgroundColor: '#FFFFFF',
+                reversed: true
+            },
+            plotOptions: {
+                series: {
+                    stacking: 'normal'
+                }
+            },
+                series: [{
+                name: 'A',
+                data: [vala]
+            }, {
+                name: 'B',
+                data: [valb]
+            }, {
+                name: 'C',
+                data: [valc]
+            }, {
+                name: 'D',
+                data: [vald]
+            }, {
+                name: 'E',
+                data: [vale]
+            }
+			]
+        });
+		$('#container3').highcharts({
+        chart: {
+            type: 'funnel',
+            marginRight: 100
+        },
+        title: {
+            text: 'Sales funnel',
+            x: -50
+        },
+        plotOptions: {
+            series: {
+                dataLabels: {
+                    enabled: true,
+                    format: '<b>{point.name}</b> ({point.y:,.0f})',
+                    color: 'black',
+                    softConnector: true
+                },
+                neckWidth: '100%',
+                neckHeight: '0%'
+                
+                //-- Other available options
+                // height: pixels or percent
+                , width: '0%'
+            }
+        },
+        legend: {
+            enabled: false
+        },
+        series: [{
+            name: 'Percentage',
+            data: [
+                ['A',vala],
+                ['B',valb],
+                ['C',valc],
+                ['D',vald],
+                ['E',vale]
+            ]
+        }]
+    });
+
+});
+    
+});
+    
+
+		</script>
+	</head>
+	<body>
+<script src="highcharts.js"></script>
+<script src="funnel.js"></script>
+<script src="exporting.js"></script>
+<div>
+A<input type="text" class="txta"/> 
+&nbsp;&nbsp;&nbsp;B<input type="text" class="txtb" />
+&nbsp;&nbsp;&nbsp;C<input type="text" class="txtc" />
+&nbsp;&nbsp;&nbsp;D<input type="text" class="txtd" />
+&nbsp;&nbsp;&nbsp;E<input type="text" class="txte"/> 
+<button type="button" class="btnClick">Magic</button>
+</div>
+<div id="container" style="width: 400px; height: 300px;float:left"></div>
+<div id="container1" style="width: 400px; height: 300px;float:left;"></div>
+<div id="container2" style="width: 400px; height: 300px;"></div>
+<div id="container3" style="width: 400px; height: 300px;clear:both"></div>
+
+	</body>
+</html>
